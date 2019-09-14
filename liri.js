@@ -20,4 +20,6 @@ switch (command) {
     case "do-what-it-says":
         console.log('just do it');
         break;
+    default:
+        console.log('Command not supported!');
 }
