@@ -93,13 +93,11 @@ function doWhatItSays() {
         if (err) {
             return console.log(err);
         }
+        
         var read = data.split(',');
 
         command = read[0];
-
         request = read[1];
-
-        // console.log(command + ' ' + request);
 
         function execute(command) {
             const exec = require('child_process').exec
