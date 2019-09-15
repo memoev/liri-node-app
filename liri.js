@@ -32,12 +32,30 @@ function concertThis() {
     });
 }
 
+function spotifyThisSong() {
+    if (request === "") {
+         request = "The Sign Ace of Base.";
+    }
+    
+    spotify.search({ type: 'track', query: request }, function (err, data) {
+
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        var song = data.tracks.items;
+
+        for (i = 0; i < 1; i++) {
+            console.log('========================\nArtist(s): ' + song[i].album.artists[i].name + "\n------------------------\nThe song's name: " + song[i].name + '\n------------------------\nA preview link: ' + song[i].preview_url + '\n------------------------\nThe album name: ' + song[i].album.name + '\n========================');
+        }
+    });
+}
+
 switch (command) {
     case "concert-this":
         concertThis();
         break;
     case "spotify-this-song":
-        console.log('spotify');
+        spotifyThisSong();
         break;
     case "movie-this":
         console.log('movie');
