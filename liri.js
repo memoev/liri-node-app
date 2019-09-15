@@ -11,7 +11,7 @@ var spotify = new Spotify(keys.spotify);
 var command = process.argv[2];
 var request = process.argv.slice(3).join('+');
 
-// Function to render concert information from Bands In Town API.
+// Function to render concert information from Bands In Town API using axios.
 function concertThis() {
     axios.get("https://rest.bandsintown.com/artists/" + request + "/events?app_id=codingbootcamp").then(function (response) {
         console.log('============ ' + process.argv.slice(3).join(' ') + ' ============');
@@ -36,7 +36,7 @@ function concertThis() {
     });
 }
 
-// Function to render song information from Spotify API.
+// Function to render song information from Spotify API using spotify node package.
 function spotifyThisSong() {
     if (request === "") {
          request = "The Sign Ace of Base.";
@@ -59,7 +59,7 @@ function spotifyThisSong() {
     });
 }
 
-// Function to render movie information from OMDB API.
+// Function to render movie information from OMDB API using axios.
 function movieThis() {
     if (request === "") {
         request = 'Mr. Nobody'
