@@ -99,7 +99,17 @@ function doWhatItSays() {
 
         request = read[1];
 
-        console.log(command + ' ' + request);
+        // console.log(command + ' ' + request);
+
+        function execute(command) {
+            const exec = require('child_process').exec
+
+            exec(command, (err, stdout, stderr) => {
+                process.stdout.write(stdout)
+            })
+        }
+
+        execute('node liri ' + command + ' ' + request)
     });
 }
 
