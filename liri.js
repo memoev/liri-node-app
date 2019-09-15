@@ -1,6 +1,7 @@
 require("dotenv").config();
 var axios = require('axios');
 const Spotify = require("node-spotify-api");
+var fs = require('fs');
 
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
@@ -87,6 +88,21 @@ function movieThis() {
     });
 }
 
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf-8", function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        var read = data.split(',');
+
+        command = read[0];
+
+        request = read[1];
+
+        console.log(command + ' ' + request);
+    });
+}
+
 switch (command) {
     case "concert-this":
         concertThis();
@@ -98,7 +114,7 @@ switch (command) {
         movieThis();
         break;
     case "do-what-it-says":
-        console.log('just do it');
+        doWhatItSays();
         break;
     default:
         console.log('Command not supported!');
