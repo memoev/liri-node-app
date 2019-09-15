@@ -1,3 +1,4 @@
+// Required node packages.
 require("dotenv").config();
 var axios = require('axios');
 const Spotify = require("node-spotify-api");
@@ -6,9 +7,11 @@ var fs = require('fs');
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
+// Arguments from bash
 var command = process.argv[2];
 var request = process.argv.slice(3).join('+');
 
+// Function to render concert information from Bands In Town API.
 function concertThis() {
     axios.get("https://rest.bandsintown.com/artists/" + request + "/events?app_id=codingbootcamp").then(function (response) {
         console.log('============ ' + process.argv.slice(3).join(' ') + ' ============');
@@ -33,6 +36,7 @@ function concertThis() {
     });
 }
 
+// Function to render song information from Spotify API.
 function spotifyThisSong() {
     if (request === "") {
          request = "The Sign Ace of Base.";
@@ -55,6 +59,7 @@ function spotifyThisSong() {
     });
 }
 
+// Function to render movie information from OMDB API.
 function movieThis() {
     if (request === "") {
         request = 'Mr. Nobody'
@@ -88,6 +93,7 @@ function movieThis() {
     });
 }
 
+// Function to run random command from switch statement.
 function doWhatItSays() {
     fs.readFile("random.txt", "utf-8", function (err, data) {
         if (err) {
@@ -99,6 +105,7 @@ function doWhatItSays() {
         command = read[0];
         request = read[1];
 
+        // Function to run commands reading random.txt
         function execute(command) {
             const exec = require('child_process').exec
 
@@ -111,6 +118,7 @@ function doWhatItSays() {
     });
 }
 
+// Master switch statement
 switch (command) {
     case "concert-this":
         concertThis();
