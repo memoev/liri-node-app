@@ -58,3 +58,6 @@ Working web browser (e.g Chrome, Firefox, Safari, Opera, etc.) from the list of 
   npm i
   ```
   Users will need a `.env` file specifying Spotify personal keys.
+
+## Example Images
+Images showing results can be found inside the `example-images` folder in the root of this repository.
