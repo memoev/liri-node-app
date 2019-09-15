@@ -45,12 +45,20 @@ function spotifyThisSong() {
         var song = data.tracks.items;
 
         for (i = 0; i < 1; i++) {
-            console.log('========================\nArtist(s): ' + song[i].album.artists[i].name + "\n------------------------\nThe song's name: " + song[i].name + '\n------------------------\nA preview link: ' + song[i].preview_url + '\n------------------------\nThe album name: ' + song[i].album.name + '\n========================');
+            console.log('========================\nArtist(s): ' + song[i].album.artists[i].name + 
+            "\n------------------------\nThe song's name: " + song[i].name + 
+            '\n------------------------\nA preview link: ' + song[i].preview_url + 
+            '\n------------------------\nThe album name: ' + song[i].album.name + 
+            '\n========================');
         }
     });
 }
 
 function movieThis() {
+    if (request === "") {
+        request = 'Mr. Nobody'
+    }
+
     axios.get("http://www.omdbapi.com/?t=" + request + "&y=&plot=short&apikey=trilogy").then(function (response) {
         console.log('\n==============================');
         console.log('Title: ' + response.data.Title + '\n--------------------' +
