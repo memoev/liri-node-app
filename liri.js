@@ -145,5 +145,6 @@ switch (command) {
         doWhatItSays();
         break;
     default:
+        welcome();
         console.log('Command not supported!');
 }
