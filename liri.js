@@ -12,14 +12,17 @@ var spotify = new Spotify(keys.spotify);
 var command = process.argv[2];
 var request = process.argv.slice(3).join('+');
 
-// Welcome message:
-console.log("\x1b[32m","____ ____ ____ ____ ____ ____ ____ ");
-console.log("||L |||I |||R |||I |||B |||O |||T ||");
-console.log("||__|||__|||__|||__|||__|||__|||__||");
-console.log("|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|\n", "\x1b[37m");
+// Welcome message
+function welcome() {
+    console.log("\x1b[32m","____ ____ ____ ____ ____ ____ ____ ");
+    console.log("||L |||I |||R |||I |||B |||O |||T ||");
+    console.log("||__|||__|||__|||__|||__|||__|||__||");
+    console.log("|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|/__\\|\n", "\x1b[37m");
+}
 
 // Function to render concert information from Bands In Town API using axios.
 function concertThis() {
+    welcome();
     axios.get("https://rest.bandsintown.com/artists/" + request + "/events?app_id=codingbootcamp").then(function (response) {
         console.log('============ ' + process.argv.slice(3).join(' ') + ' ============');
         for (i = 0; i < 3; i++) {
@@ -45,6 +48,7 @@ function concertThis() {
 
 // Function to render song information from Spotify API using spotify node package.
 function spotifyThisSong() {
+    welcome();
     if (request === "") {
          request = "The Sign Ace of Base.";
     }
@@ -68,6 +72,7 @@ function spotifyThisSong() {
 
 // Function to render movie information from OMDB API using axios.
 function movieThis() {
+    welcome();
     if (request === "") {
         request = 'Mr. Nobody'
     }
@@ -102,6 +107,7 @@ function movieThis() {
 
 // Function to run random command from switch statement.
 function doWhatItSays() {
+    welcome();
     fs.readFile("random.txt", "utf-8", function (err, data) {
         if (err) {
             return console.log(err);
