@@ -107,7 +107,6 @@ function movieThis() {
 
 // Function to run random command from switch statement.
 function doWhatItSays() {
-    welcome();
     fs.readFile("random.txt", "utf-8", function (err, data) {
         if (err) {
             return console.log(err);
