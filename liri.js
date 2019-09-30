@@ -12,6 +12,15 @@ var spotify = new Spotify(keys.spotify);
 var command = process.argv[2];
 var request = process.argv.slice(3).join('+');
 
+// Welcome message:
+console.log(' __     ______   ____    ______   ____     _____   ______   ');
+console.log('/\ \   /\__  _\ /\  _`\ /\__  _\ /\  _`\  /\  __`\/\__  _\  ');
+console.log('\ \ \  \/_/\ \/ \ \ \L\ \/_/\ \/ \ \ \L\ \\ \ \/\ \/_/\ \/  ');
+console.log(" \ \ \  __\ \ \  \ \ ,  /  \ \ \  \ \  _ <'\ \ \ \ \ \ \ \  ");
+console.log("  \ \ \L\ \\_\ \__\ \ \\ \  \_\ \__\ \ \L\ \\ \ \_\ \ \ \ \ ");
+console.log("   \ \____//\_____\\ \_\ \_\/\_____\\ \____/ \ \_____\ \ \_\"");
+console.log("    \/___/ \/_____/ \/_/\/ /\/_____/ \/___/   \/_____/  \/_/");
+
 // Function to render concert information from Bands In Town API using axios.
 function concertThis() {
     axios.get("https://rest.bandsintown.com/artists/" + request + "/events?app_id=codingbootcamp").then(function (response) {
